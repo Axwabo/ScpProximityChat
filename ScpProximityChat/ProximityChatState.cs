@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using LabApi.Features.Wrappers;
+using PlayerRoles.PlayableScps;
+using PlayerRoles.PlayableScps.Scp3114;
 using SpeakerToy = AdminToys.SpeakerToy;
 
 namespace ScpProximityChat;
@@ -30,5 +32,7 @@ public static class ProximityChatState
             player.EnableProximityChat();
         return true;
     }
+
+    public static bool CanUseProximityChat(this Player player) => player.RoleBase is not (FpcStandardScp and not Scp3114Role);
 
 }

@@ -1,7 +1,5 @@
 ﻿using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.CustomHandlers;
-using PlayerRoles.PlayableScps;
-using PlayerRoles.PlayableScps.Scp3114;
 using Utils.Networking;
 using VoiceChat.Networking;
 
@@ -14,7 +12,7 @@ public sealed class EventHandlers : CustomEventsHandler
 
     public override void OnPlayerChangedRole(PlayerChangedRoleEventArgs ev)
     {
-        if (ev.NewRole is not (FpcStandardScp and not Scp3114Role))
+        if (ev.Player.CanUseProximityChat())
             ev.Player.DisableProximityChat();
     }
 
