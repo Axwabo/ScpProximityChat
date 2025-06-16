@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using LabApi.Features.Wrappers;
+﻿using System.Linq;
 using UnityEngine;
-using SpeakerToy = AdminToys.SpeakerToy;
 
 namespace ScpProximityChat;
 

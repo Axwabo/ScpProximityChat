@@ -1,5 +1,4 @@
-﻿using System;
-using LabApi.Loader.Features.Plugins;
+﻿using LabApi.Loader.Features.Plugins;
 using SecretAPI.Features.UserSettings;
 
 namespace ScpProximityChat.SecretAPI;

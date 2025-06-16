@@ -16,4 +16,11 @@
         <Reference Include="Pooling"/>
         <Reference Include="UnityEngine.CoreModule"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="System"/>
+        <Using Include="System.Collections.Generic"/>
+        <Using Include="AdminToys.SpeakerToy" Alias="SpeakerToy"/>
+        <Using Include="LabApi.Features.Wrappers"/>
+    </ItemGroup>
 </Project>

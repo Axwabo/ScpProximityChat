@@ -1,19 +1,18 @@
-﻿using System.Collections.Generic;
-using LabApi.Features.Wrappers;
-using PlayerRoles.PlayableScps;
+﻿using PlayerRoles.PlayableScps;
 using PlayerRoles.PlayableScps.Scp3114;
-using SpeakerToy = AdminToys.SpeakerToy;
 
 namespace ScpProximityChat;
 
 public static class ProximityChatState
 {
 
-    public static Dictionary<Player, SpeakerToy> ActiveSpeakers { get; } = [];
+    internal static Dictionary<Player, SpeakerToy> ActiveSpeakers { get; } = [];
+
+    public static bool IsProximityChatEnabled(this Player player) => ActiveSpeakers.ContainsKey(player);
 
     public static void EnableProximityChat(this Player player)
     {
-        if (!ActiveSpeakers.ContainsKey(player))
+        if (!player.IsProximityChatEnabled())
             ActiveSpeakers.Add(player, PooledSpeaker.Rent(player));
     }
 
@@ -28,8 +27,14 @@ public static class ProximityChatState
 
     public static bool ToggleProximityChat(this Player player)
     {
-        if (!player.DisableProximityChat())
-            player.EnableProximityChat();
+        if (player.DisableProximityChat())
+        {
+            ProximityChatEvents.OnToggled(player, false);
+            return false;
+        }
+
+        player.EnableProximityChat();
+        ProximityChatEvents.OnToggled(player, true);
         return true;
     }
 

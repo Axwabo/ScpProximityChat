@@ -1,5 +1,4 @@
-﻿using LabApi.Features.Wrappers;
-using SecretAPI.Features.UserSettings;
+﻿using SecretAPI.Features.UserSettings;
 using UnityEngine;
 
 namespace ScpProximityChat.SecretAPI;
