@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net48</TargetFramework>
+        <LangVersion>13</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Northwood.LabAPI" Version="1.0.2"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Reference Include="Assembly-CSharp"/>
+        <Reference Include="Mirror"/>
+        <Reference Include="UnityEngine.CoreModule"/>
+    </ItemGroup>
+
+</Project>

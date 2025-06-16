@@ -1,0 +1,8 @@
+﻿<Project>
+    <Import Project="ReferencePath.props.user" Condition="Exists('ReferencePath.props.user')"/>
+    <PropertyGroup>
+        <AssemblySearchPaths>$(AssemblySearchPaths);$(ReferencePath)</AssemblySearchPaths>
+    </PropertyGroup>
+
+
+</Project>

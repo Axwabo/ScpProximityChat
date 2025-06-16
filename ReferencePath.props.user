@@ -1,0 +1,8 @@
+<Project>
+    <PropertyGroup>
+        <ReferencePath>$(NW-ASSEMBLIES)\LabAPI</ReferencePath>
+    </PropertyGroup>
+    <Target Name="CopyDll" AfterTargets="Build">
+        <Copy SourceFiles="$(OutputPath)/$(ProjectName).dll" DestinationFolder="C:/Users/Axwabo/AppData/Roaming/SCP Secret Laboratory/LabAPI/plugins/global"/>
+    </Target>
+</Project>
