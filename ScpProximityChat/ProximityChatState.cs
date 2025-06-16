@@ -33,6 +33,6 @@ public static class ProximityChatState
         return true;
     }
 
-    public static bool CanUseProximityChat(this Player player) => player.RoleBase is not (FpcStandardScp and not Scp3114Role);
+    public static bool CanUseProximityChat(this Player player) => player.RoleBase is FpcStandardScp and not Scp3114Role;
 
 }

@@ -24,11 +24,19 @@ public sealed class PooledSpeaker : MonoBehaviour
         Instances.Remove(pooled);
         Destroy(pooled);
         pooled.Toy.transform.SetParent(player.GameObject.transform, false);
-        pooled.Toy.ControllerId = (byte) player.PlayerId;
+        pooled.Toy.transform.localPosition = Vector3.zero;
+        pooled.Toy.NetworkControllerId = (byte) player.PlayerId;
+        pooled.Toy.gameObject.SetActive(true);
         return pooled.Toy;
     }
 
-    public static void Return(SpeakerToy toy) => toy.gameObject.AddComponent<PooledSpeaker>();
+    public static void Return(SpeakerToy toy)
+    {
+        var go = toy.gameObject;
+        toy.transform.parent = null;
+        go.AddComponent<PooledSpeaker>();
+        go.SetActive(false);
+    }
 
     public SpeakerToy Toy { get; private set; } = null!;
 
@@ -36,8 +44,6 @@ public sealed class PooledSpeaker : MonoBehaviour
     {
         Instances.Add(this);
         Toy = GetComponent<SpeakerToy>();
-        transform.parent = null;
-        gameObject.SetActive(false);
     }
 
     private void OnDestroy() => Instances.Remove(this);

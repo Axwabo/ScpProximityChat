@@ -1,4 +1,5 @@
 ﻿using System;
+using LabApi.Events.CustomHandlers;
 using LabApi.Loader.Features.Plugins;
 
 namespace ScpProximityChat;
@@ -12,12 +13,10 @@ public sealed class ProximityChatPlugin : Plugin
     public override Version Version => GetType().Assembly.GetName().Version;
     public override Version RequiredApiVersion { get; } = new(1, 0, 0);
 
-    public override void Enable()
-    {
-    }
+    private readonly EventHandlers _eventHandlers = new();
 
-    public override void Disable()
-    {
-    }
+    public override void Enable() => CustomHandlersManager.RegisterEventsHandler(_eventHandlers);
+
+    public override void Disable() => CustomHandlersManager.UnregisterEventsHandler(_eventHandlers);
 
 }
