@@ -14,7 +14,7 @@ public sealed class ProximityChatToggle : CustomKeybindSetting
 
     protected override void HandleSettingUpdate(Player player)
     {
-        if (player.CanUseProximityChat())
+        if (IsPressed && player.CanUseProximityChat())
             player.ToggleProximityChat();
     }
 
