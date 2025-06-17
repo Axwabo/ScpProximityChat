@@ -1,7 +1,7 @@
 ﻿using PlayerRoles.PlayableScps;
 using PlayerRoles.PlayableScps.Scp3114;
 
-namespace ScpProximityChat;
+namespace ScpProximityChat.Core;
 
 public static class ProximityChatState
 {

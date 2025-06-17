@@ -1,4 +1,4 @@
-﻿namespace ScpProximityChat;
+﻿namespace ScpProximityChat.Core;
 
 public static class ProximityChatEvents
 {

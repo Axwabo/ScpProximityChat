@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScpProximityChat", "ScpProximityChat\ScpProximityChat.csproj", "{40CD5FAB-311A-4044-89F4-36E6D292D12A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScpProximityChat.Core", "ScpProximityChat.Core\ScpProximityChat.Core.csproj", "{40CD5FAB-311A-4044-89F4-36E6D292D12A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScpProximityChat.SecretAPI", "ScpProximityChat.SecretAPI\ScpProximityChat.SecretAPI.csproj", "{BF0DF519-92BB-4C8C-A1FD-5B5DF73EF56C}"
 EndProject

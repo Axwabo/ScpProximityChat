@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-namespace ScpProximityChat;
+namespace ScpProximityChat.Core;
 
 public sealed class PooledSpeaker : MonoBehaviour
 {

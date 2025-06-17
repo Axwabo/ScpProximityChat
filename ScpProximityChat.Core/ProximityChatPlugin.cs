@@ -1,7 +1,7 @@
 ﻿using LabApi.Events.CustomHandlers;
 using LabApi.Loader.Features.Plugins;
 
-namespace ScpProximityChat;
+namespace ScpProximityChat.Core;
 
 public sealed class ProximityChatPlugin : Plugin<ProximityChatConfig>
 {
@@ -34,7 +34,7 @@ public sealed class ProximityChatPlugin : Plugin<ProximityChatConfig>
     private void ProximityChatEventsOnToggled(Player player, bool enabled)
     {
         if (Config!.ShowToggledHint)
-            player.SendHint($"Proximity Chat {(enabled ? "enabled" : "disabled")}.");
+            player.SendHint(enabled ? Config.Enabled : Config.Disabled);
     }
 
 }

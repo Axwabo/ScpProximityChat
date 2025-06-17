@@ -3,7 +3,7 @@ using LabApi.Events.CustomHandlers;
 using VoiceChat;
 using VoiceChat.Networking;
 
-namespace ScpProximityChat;
+namespace ScpProximityChat.Core;
 
 public sealed class EventHandlers : CustomEventsHandler
 {

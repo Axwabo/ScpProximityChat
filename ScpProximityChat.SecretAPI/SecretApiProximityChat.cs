@@ -1,5 +1,6 @@
 ﻿using Hints;
 using LabApi.Loader.Features.Plugins;
+using ScpProximityChat.Core;
 using SecretAPI.Features.UserSettings;
 
 namespace ScpProximityChat.SecretAPI;
@@ -29,7 +30,7 @@ public sealed class SecretApiProximityChat : Plugin<SecretApiProximityConfig>
     {
         if (Config!.ShowAvailableHint)
             player.SendHint(
-                "\n\n\n\nSCP Proximity Chat available.\nPress <mark=#77777755><size=0>.</size><space=0.2em><b>{0}</b><space=0.2em><size=0>.</size></mark> to toggle.",
+                Config.AvailableHint,
                 [new SSKeybindHintParameter(SettingId)],
                 HintEffectPresets.FadeInAndOut(0.95f),
                 10
