@@ -12,12 +12,14 @@ public static class ProximityChatState
 
     public static bool IsProximityChatEnabled(this Player player) => ActiveSpeakers.ContainsKey(player);
 
-    public static void EnableProximityChat(this Player player)
+    public static bool EnableProximityChat(this Player player)
     {
-        if (!player.IsProximityChatEnabled())
-            ActiveSpeakers.Add(player, SpeakerToyPool.Rent(player.GameObject.transform)
-                .WithId(SpeakerToyPool.NextAvailableId)
-                .ApplySettings(ProximityChatPlugin.Cfg.AudioSettings));
+        if (player.IsProximityChatEnabled())
+            return false;
+        ActiveSpeakers.Add(player, SpeakerToyPool.Rent(player.GameObject.transform)
+            .WithId(SpeakerToyPool.NextAvailableId)
+            .ApplySettings(ProximityChatPlugin.Cfg.AudioSettings));
+        return true;
     }
 
     public static bool DisableProximityChat(this Player player)
