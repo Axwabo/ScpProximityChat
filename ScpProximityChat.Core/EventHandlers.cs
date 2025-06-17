@@ -33,4 +33,6 @@ internal sealed class EventHandlers : CustomEventsHandler
                 player.Connection.Send(message);
     }
 
+    public override void OnServerWaitingForPlayers() => ProximityChatState.ActiveSpeakers.Clear();
+
 }
