@@ -23,7 +23,7 @@ public sealed class ProximityChatPlugin : Plugin<ProximityChatConfig>
     public override void Enable()
     {
         _instance = this;
-        ProximityChatEvents.Toggled += ProximityChatEventsOnToggled;
+        ProximityChatEvents.Toggled += OnToggled;
         CustomHandlersManager.RegisterEventsHandler(_eventHandlers);
         var allowedRoles = Config!.AllowedRoles;
         if (allowedRoles == null)
@@ -34,11 +34,11 @@ public sealed class ProximityChatPlugin : Plugin<ProximityChatConfig>
 
     public override void Disable()
     {
-        ProximityChatEvents.Toggled -= ProximityChatEventsOnToggled;
+        ProximityChatEvents.Toggled -= OnToggled;
         CustomHandlersManager.UnregisterEventsHandler(_eventHandlers);
     }
 
-    private void ProximityChatEventsOnToggled(Player player, bool enabled)
+    private void OnToggled(Player player, bool enabled)
     {
         if (Config!.ShowToggledHint)
             player.SendHint(enabled ? Config.Enabled : Config.Disabled);
