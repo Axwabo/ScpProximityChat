@@ -1,10 +1,12 @@
-﻿using PlayerRoles.PlayableScps;
-using PlayerRoles.PlayableScps.Scp3114;
+﻿using SecretLabNAudio.Core.Extensions;
+using SecretLabNAudio.Core.Pools;
 
 namespace ScpProximityChat.Core;
 
 public static class ProximityChatState
 {
+
+    public static List<Func<Player, bool>> Conditions { get; } = [];
 
     internal static Dictionary<Player, SpeakerToy> ActiveSpeakers { get; } = [];
 
@@ -13,14 +15,16 @@ public static class ProximityChatState
     public static void EnableProximityChat(this Player player)
     {
         if (!player.IsProximityChatEnabled())
-            ActiveSpeakers.Add(player, PooledSpeaker.Rent(player));
+            ActiveSpeakers.Add(player, SpeakerToyPool.Rent(player.GameObject.transform)
+                .WithId(SpeakerToyPool.NextAvailableId)
+                .ApplySettings(ProximityChatPlugin.Cfg.AudioSettings));
     }
 
     public static bool DisableProximityChat(this Player player)
     {
         if (!ActiveSpeakers.TryGetValue(player, out var speaker))
             return false;
-        PooledSpeaker.Return(speaker);
+        SpeakerToyPool.Return(speaker);
         ActiveSpeakers.Remove(player);
         return true;
     }
@@ -38,6 +42,12 @@ public static class ProximityChatState
         return true;
     }
 
-    public static bool CanUseProximityChat(this Player player) => player.RoleBase is FpcStandardScp and not Scp3114Role;
+    public static bool CanUseProximityChat(this Player player)
+    {
+        foreach (var condition in Conditions)
+            if (!condition(player))
+                return false;
+        return true;
+    }
 
 }

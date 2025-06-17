@@ -1,5 +1,7 @@
 ﻿using LabApi.Events.CustomHandlers;
 using LabApi.Loader.Features.Plugins;
+using PlayerRoles.PlayableScps;
+using PlayerRoles.PlayableScps.Scp3114;
 
 namespace ScpProximityChat.Core;
 
@@ -23,6 +25,11 @@ public sealed class ProximityChatPlugin : Plugin<ProximityChatConfig>
         _instance = this;
         ProximityChatEvents.Toggled += ProximityChatEventsOnToggled;
         CustomHandlersManager.RegisterEventsHandler(_eventHandlers);
+        var allowedRoles = Config!.AllowedRoles;
+        if (allowedRoles == null)
+            ProximityChatState.Conditions.Add(player => player.RoleBase is FpcStandardScp and not Scp3114Role);
+        else
+            ProximityChatState.Conditions.Add(player => allowedRoles.Contains(player.Role));
     }
 
     public override void Disable()

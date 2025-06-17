@@ -1,4 +1,8 @@
-﻿namespace ScpProximityChat.Core;
+﻿using System.ComponentModel;
+using PlayerRoles;
+using SecretLabNAudio.Core;
+
+namespace ScpProximityChat.Core;
 
 public sealed class ProximityChatConfig
 {
@@ -8,5 +12,10 @@ public sealed class ProximityChatConfig
     public string Enabled { get; set; } = "Proximity Chat enabled.";
 
     public string Disabled { get; set; } = "Proximity Chat disabled.";
+
+    public SpeakerSettings AudioSettings { get; set; } = SpeakerSettings.Default;
+
+    [Description("Set to null to use the default condition (all SCPs except SCP-079 and SCP-3114)")]
+    public List<RoleTypeId>? AllowedRoles { get; set; }
 
 }
