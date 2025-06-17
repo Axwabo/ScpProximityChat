@@ -5,7 +5,7 @@ using VoiceChat.Networking;
 
 namespace ScpProximityChat.Core;
 
-public sealed class EventHandlers : CustomEventsHandler
+internal sealed class EventHandlers : CustomEventsHandler
 {
 
     public override void OnPlayerLeft(PlayerLeftEventArgs ev) => ev.Player.DisableProximityChat();
