@@ -16,7 +16,7 @@ public static class PersonalizationManager
 
     private static readonly Dictionary<string, SpeakerPersonalization> PersonalizationInstances = [];
 
-    public static float DefaultVolume { get; set; } = 100;
+    public static int DefaultVolume { get; set; } = 100;
 
     public static int IdFor(string userId)
         => IdHashes.TryGetValue(userId, out var hash)
@@ -72,10 +72,10 @@ public static class PersonalizationManager
                 personalization.Override(target, defaultSettings with {Volume = volume.Volume});
     }
 
-    public static void Configure(Player player, string targetId, float volume)
+    public static void Configure(Player receiver, string sourceId, float volume)
     {
-        if (PersonalizationInstances.TryGetValue(targetId, out var personalization))
-            personalization.Override(player, SpeakerSettings.From(personalization) with {Volume = volume});
+        if (PersonalizationInstances.TryGetValue(sourceId, out var personalization))
+            personalization.Override(receiver, SpeakerSettings.From(personalization) with {Volume = volume});
     }
 
 }

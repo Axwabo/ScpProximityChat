@@ -14,6 +14,6 @@ public sealed class SecretApiProximityChatConfig
     public bool Personalization { get; set; } = true;
 
     [Description("Default volume percentage if personalization is enabled.")]
-    public float DefaultVolume { get; set; } = 100;
+    public int DefaultVolume { get; set; } = 100;
 
 }

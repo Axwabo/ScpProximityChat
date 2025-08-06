@@ -1,5 +1,6 @@
 ﻿using LabApi.Events.CustomHandlers;
 using LabApi.Loader.Features.Plugins;
+using LabApi.Loader.Features.Plugins.Enums;
 using PlayerRoles.PlayableScps;
 using PlayerRoles.PlayableScps.Scp3114;
 
@@ -17,6 +18,7 @@ public sealed class ProximityChatPlugin : Plugin<ProximityChatConfig>
     public override string Author => "Axwabo";
     public override Version Version => GetType().Assembly.GetName().Version;
     public override Version RequiredApiVersion { get; } = new(1, 0, 0);
+    public override LoadPriority Priority => LoadPriority.High;
 
     private readonly EventHandlers _eventHandlers = new();
 
@@ -25,6 +27,7 @@ public sealed class ProximityChatPlugin : Plugin<ProximityChatConfig>
         _instance = this;
         ProximityChatEvents.Toggled += OnToggled;
         CustomHandlersManager.RegisterEventsHandler(_eventHandlers);
+        VolumeBoost.Amount = Config!.VolumeBoost;
         var allowedRoles = Config!.AllowedRoles;
         if (allowedRoles == null)
             ProximityChatState.Conditions.Add(player => player.RoleBase is FpcStandardScp and not Scp3114Role);

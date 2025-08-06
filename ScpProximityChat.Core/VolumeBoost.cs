@@ -15,15 +15,16 @@ public static class VolumeBoost
 
     private static readonly Dictionary<Player, AudioProcessor> AudioProcessors = [];
 
+    public static float Amount { get; set; }
+
     public static AudioMessage Convert(Player sender, VoiceMessage message)
     {
-        var boost = ProximityChatPlugin.Cfg.VolumeBoost;
-        if (Mathf.Approximately(boost, 0))
+        if (Mathf.Approximately(Amount, 0))
             return new AudioMessage(0, message.Data, message.DataLength);
         var (decoder, encoder) = GetOrAdd(sender);
         var decoded = decoder.Decode(message.Data, message.DataLength, Samples);
         for (var i = 0; i < decoded; i++)
-            Samples[i] *= boost;
+            Samples[i] *= Amount;
         var encoded = encoder.Encode(Samples, Encoded, decoded);
         return new AudioMessage(0, Encoded, encoded);
     }
