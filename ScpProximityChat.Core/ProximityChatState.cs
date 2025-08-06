@@ -30,10 +30,9 @@ public static class ProximityChatState
 
     public static bool DisableProximityChat(this Player player)
     {
-        if (!ActiveSpeakers.TryGetValue(player, out var speaker))
+        if (!ActiveSpeakers.Remove(player, out var speaker))
             return false;
         SpeakerToyPool.Return(speaker);
-        ActiveSpeakers.Remove(player);
         return true;
     }
 

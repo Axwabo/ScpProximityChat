@@ -20,6 +20,7 @@ internal sealed class EventHandlers : CustomEventsHandler
 
         if (!ev.Player.IsProximityChatEnabled())
             ProximityChatEvents.OnAvailable(ev.Player);
+        ev.Player.EnableProximityChat();
     }
 
     public override void OnPlayerSendingVoiceMessage(PlayerSendingVoiceMessageEventArgs ev)
@@ -29,8 +30,13 @@ internal sealed class EventHandlers : CustomEventsHandler
         ev.IsAllowed = false;
         var message = new AudioMessage(speaker.ControllerId, ev.Message.Data, ev.Message.DataLength);
         foreach (var player in Player.ReadyList)
-            if (player != ev.Player)
-                player.Connection.Send(message);
+        {
+            if (player == ev.Player)
+                continue;
+            var allow = true;
+            ProximityChatEvents.OnReceiving(ev.Player, player, ref allow);
+            player.Connection.Send(message);
+        }
     }
 
     public override void OnServerWaitingForPlayers() => ProximityChatState.ActiveSpeakers.Clear();

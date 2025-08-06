@@ -4,10 +4,17 @@
         <TargetFramework>net48</TargetFramework>
         <LangVersion>13</LangVersion>
         <Nullable>enable</Nullable>
+        <DIsableImplicitFrameworkReferences>true</DIsableImplicitFrameworkReferences>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Northwood.LabAPI" Version="1.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="mscorlib" />
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
     </ItemGroup>
 
     <ItemGroup>
