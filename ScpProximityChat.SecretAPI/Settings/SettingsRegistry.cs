@@ -5,10 +5,12 @@ namespace ScpProximityChat.SecretAPI.Settings;
 internal static class SettingsRegistry
 {
 
-    private static readonly HashSet<CustomSetting> All = [];
-
     public static ProximityChatToggle Toggle { get; } = new();
 
-    public static IReadOnlyCollection<CustomSetting> AllSettings => All;
+    public static ProximityChatMute Mute { get; } = new();
+
+    public static PersonalizationVisibility PersonalizationVisibility { get; } = new();
+
+    public static HashSet<CustomSetting> All { get; } = [Toggle, Mute, PersonalizationVisibility];
 
 }

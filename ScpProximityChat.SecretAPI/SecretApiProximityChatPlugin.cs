@@ -18,13 +18,19 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
     public override void Enable()
     {
         ProximityChatEvents.Available += SendAvailableHint;
+        ProximityChatEvents.Receiving += Receiving;
         CustomSetting.Register(SettingsRegistry.Toggle);
+        CustomSetting.Register(SettingsRegistry.Mute);
+        if (!Config!.Personalization)
+            return;
+        CustomSetting.Register(SettingsRegistry.PersonalizationVisibility);
     }
 
     public override void Disable()
     {
         ProximityChatEvents.Available -= SendAvailableHint;
-        CustomSetting.UnRegister(SettingsRegistry.AllSettings);
+        ProximityChatEvents.Receiving -= Receiving;
+        CustomSetting.UnRegister(SettingsRegistry.All);
     }
 
     private void SendAvailableHint(Player player)
@@ -36,6 +42,12 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
                 HintEffectPresets.FadeInAndOut(0.95f),
                 10
             );
+    }
+
+    private static void Receiving(Player sender, Player target, ref bool allow)
+    {
+        if (allow && CustomSetting.TryGetPlayerSetting(target, out ProximityChatMute? mute) && mute.IsOptionB)
+            allow = false;
     }
 
 }
