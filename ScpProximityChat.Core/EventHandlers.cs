@@ -20,7 +20,6 @@ internal sealed class EventHandlers : CustomEventsHandler
 
         if (!ev.Player.IsProximityChatEnabled())
             ProximityChatEvents.OnAvailable(ev.Player);
-        ev.Player.EnableProximityChat();
     }
 
     public override void OnPlayerSendingVoiceMessage(PlayerSendingVoiceMessageEventArgs ev)
