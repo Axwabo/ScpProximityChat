@@ -9,6 +9,8 @@ public sealed class PersonalizedVolume : CustomSliderSetting
     public string Name { get; }
     public string UserId { get; }
 
+    private PersonalizationVisibility? _visibility;
+
     public PersonalizedVolume(Player player) : this(player.Nickname, player.UserId)
     {
     }
@@ -29,7 +31,13 @@ public sealed class PersonalizedVolume : CustomSliderSetting
 
     public float Volume => SelectedValueInt * 0.01f;
 
-    protected override bool CanView(Player player) => player.UserId != UserId;
+    protected override bool CanView(Player player)
+    {
+        if (player.UserId == UserId)
+            return false;
+        _visibility ??= GetPlayerSetting<PersonalizationVisibility>(SettingsRegistry.PersonalizationVisibility.Id, player);
+        return _visibility?.Visible ?? false;
+    }
 
     protected override CustomSetting CreateDuplicate() => new PersonalizedVolume(Name, UserId);
 

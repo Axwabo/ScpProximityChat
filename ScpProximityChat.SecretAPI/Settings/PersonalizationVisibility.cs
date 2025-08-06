@@ -11,13 +11,15 @@ public sealed class PersonalizationVisibility : CustomTwoButtonSetting
     {
     }
 
+    public bool Visible => IsOptionB;
+
     protected override CustomSetting CreateDuplicate() => new PersonalizationVisibility();
 
     protected override void HandleSettingUpdate()
     {
-        if (_previouslyVisible != IsDefault)
+        if (_previouslyVisible != Visible)
             SendSettingsToPlayer(KnownOwner!);
-        _previouslyVisible = IsDefault;
+        _previouslyVisible = Visible;
     }
 
     public override CustomHeader Header => Headers.ProximityChat;

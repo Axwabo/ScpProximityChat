@@ -9,6 +9,8 @@ public sealed class ProximityChatMute : CustomTwoButtonSetting
     {
     }
 
+    public bool Muted => IsOptionB;
+
     protected override CustomSetting CreateDuplicate() => new ProximityChatMute();
 
     protected override void HandleSettingUpdate()

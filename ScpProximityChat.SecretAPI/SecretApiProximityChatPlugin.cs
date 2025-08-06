@@ -54,7 +54,7 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
 
     private static void Receiving(Player sender, Player target, ref bool allow)
     {
-        if (allow && CustomSetting.TryGetPlayerSetting(target, out ProximityChatMute? mute) && !mute.IsDefault)
+        if (allow && CustomSetting.TryGetPlayerSetting(target, out ProximityChatMute? mute) && mute.Muted)
             allow = false;
     }
 
