@@ -1,4 +1,5 @@
 <Project>
+
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
         <LangVersion>13</LangVersion>
@@ -6,21 +7,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Northwood.LabAPI" Version="1.0.2"/>
+        <PackageReference Include="Northwood.LabAPI" Version="1.1.1" />
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="Assembly-CSharp"/>
-        <Reference Include="SecretLabNAudio.Core"/>
-        <Reference Include="CommandSystem.Core"/>
-        <Reference Include="Mirror"/>
-        <Reference Include="Pooling"/>
-        <Reference Include="UnityEngine.CoreModule"/>
+        <Reference Include="Assembly-CSharp" />
+        <Reference Include="CommandSystem.Core" />
+        <Reference Include="Mirror" />
+        <Reference Include="Pooling" />
+        <Reference Include="SecretLabNAudio.Core" />
+        <Reference Include="UnityEngine.CoreModule" />
     </ItemGroup>
 
     <ItemGroup>
-        <Using Include="System"/>
-        <Using Include="System.Collections.Generic"/>
-        <Using Include="LabApi.Features.Wrappers"/>
+        <Using Include="System" />
+        <Using Include="System.Collections.Generic" />
+        <Using Include="LabApi.Features.Wrappers" />
     </ItemGroup>
+
 </Project>

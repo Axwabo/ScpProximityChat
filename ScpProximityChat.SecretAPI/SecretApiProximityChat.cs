@@ -9,7 +9,7 @@ public sealed class SecretApiProximityChat : Plugin<SecretApiProximityConfig>
 {
 
     public override string Name => "SSSS Proximity Chat";
-    public override string Description => "SSSS-based proximity chat toggle";
+    public override string Description => "SSSS-based proximity chat";
     public override string Author => "Axwabo";
     public override Version Version => GetType().Assembly.GetName().Version;
     public override Version RequiredApiVersion { get; } = new(1, 0, 0);
