@@ -3,4 +3,18 @@
     <PropertyGroup>
         <AssemblySearchPaths>$(ReferencePath);$(AssemblySearchPaths)</AssemblySearchPaths>
     </PropertyGroup>
+    
+    <Target Name="NotifyIncompleteSetup" BeforeTargets="PrepareForBuild" Condition="$(ReferencePath) == ''">
+        <PropertyGroup>
+            <Template>
+&lt;Project&gt;
+    &lt;PropertyGroup&gt;
+        &lt;ReferencePath&gt;&lt;/ReferencePath&gt;
+    &lt;/PropertyGroup&gt;
+&lt;/Project&gt;
+            </Template>
+        </PropertyGroup>
+        <WriteLinesToFile File="$(MSBuildThisFileDirectory)/ReferencePath.props.user" Lines="$(Template)" Overwrite="false" Condition="!Exists('$(MSBuildThisFileDirectory)/ReferencePath.props.user')" />
+        <Error Text="The ReferencePath property is not specified! Make sure to set the property in the ReferencePath.props.user file." />
+    </Target>
 </Project>
