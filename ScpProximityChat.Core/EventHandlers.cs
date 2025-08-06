@@ -38,7 +38,8 @@ internal sealed class EventHandlers : CustomEventsHandler
                 continue;
             var allow = true;
             ProximityChatEvents.OnReceiving(ev.Player, player, ref allow);
-            player.Connection.Send(message);
+            if (allow)
+                player.Connection.Send(message);
         }
     }
 
