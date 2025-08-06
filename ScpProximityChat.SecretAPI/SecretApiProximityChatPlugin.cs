@@ -1,11 +1,12 @@
 ﻿using Hints;
 using LabApi.Loader.Features.Plugins;
 using ScpProximityChat.Core;
+using ScpProximityChat.SecretAPI.Settings;
 using SecretAPI.Features.UserSettings;
 
 namespace ScpProximityChat.SecretAPI;
 
-public sealed class SecretApiProximityChat : Plugin<SecretApiProximityConfig>
+public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChatConfig>
 {
 
     public override string Name => "SSSS Proximity Chat";
@@ -14,24 +15,24 @@ public sealed class SecretApiProximityChat : Plugin<SecretApiProximityConfig>
     public override Version Version => GetType().Assembly.GetName().Version;
     public override Version RequiredApiVersion { get; } = new(1, 0, 0);
 
-    public static int SettingId { get; private set; }
-
     public override void Enable()
     {
         ProximityChatEvents.Available += SendAvailableHint;
-        var toggle = new ProximityChatToggle();
-        SettingId = toggle.Id;
-        CustomSetting.Register(toggle);
+        CustomSetting.Register(SettingsRegistry.Toggle);
     }
 
-    public override void Disable() => ProximityChatEvents.Available -= SendAvailableHint;
+    public override void Disable()
+    {
+        ProximityChatEvents.Available -= SendAvailableHint;
+        CustomSetting.UnRegister(SettingsRegistry.AllSettings);
+    }
 
     private void SendAvailableHint(Player player)
     {
         if (Config!.ShowAvailableHint)
             player.SendHint(
                 Config.AvailableHint,
-                [new SSKeybindHintParameter(SettingId)],
+                [new SSKeybindHintParameter(SettingsRegistry.Toggle.Id)],
                 HintEffectPresets.FadeInAndOut(0.95f),
                 10
             );

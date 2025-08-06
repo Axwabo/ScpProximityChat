@@ -1,6 +1,6 @@
 ﻿using SecretAPI.Features.UserSettings;
 
-namespace ScpProximityChat.SecretAPI;
+namespace ScpProximityChat.SecretAPI.Settings;
 
 internal static class Headers
 {

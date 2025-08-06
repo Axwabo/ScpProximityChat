@@ -2,7 +2,7 @@
 using SecretAPI.Features.UserSettings;
 using UnityEngine;
 
-namespace ScpProximityChat.SecretAPI;
+namespace ScpProximityChat.SecretAPI.Settings;
 
 public sealed class ProximityChatToggle : CustomKeybindSetting
 {

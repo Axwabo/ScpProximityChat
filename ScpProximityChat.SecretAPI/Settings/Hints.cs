@@ -1,4 +1,4 @@
-namespace ScpProximityChat.SecretAPI;
+namespace ScpProximityChat.SecretAPI.Settings;
 
 public static class Hints
 {
