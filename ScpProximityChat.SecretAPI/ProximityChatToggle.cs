@@ -7,18 +7,18 @@ namespace ScpProximityChat.SecretAPI;
 public sealed class ProximityChatToggle : CustomKeybindSetting
 {
 
-    public ProximityChatToggle() : base(null, "Toggle SCP Proximity Chat", KeyCode.LeftAlt, allowSpectatorTrigger: false)
+    public ProximityChatToggle() : base(null, "Toggle SCP Proximity Chat", KeyCode.LeftAlt, true, false, Hints.Toggle)
     {
     }
 
     protected override CustomSetting CreateDuplicate() => new ProximityChatToggle();
 
-    protected override void HandleSettingUpdate(Player player)
+    protected override void HandleSettingUpdate()
     {
-        if (IsPressed && player.CanUseProximityChat())
-            player.ToggleProximityChat();
+        if (IsPressed && KnownOwner!.CanUseProximityChat())
+            KnownOwner!.ToggleProximityChat();
     }
 
-    public override CustomHeader Header { get; } = new("Proximity Chat");
+    public override CustomHeader Header => Headers.ProximityChat;
 
 }
