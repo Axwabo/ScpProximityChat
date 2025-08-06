@@ -1,6 +1,8 @@
 ﻿using Hints;
+using LabApi.Events.CustomHandlers;
 using LabApi.Loader.Features.Plugins;
 using ScpProximityChat.Core;
+using ScpProximityChat.SecretAPI.Personalization;
 using ScpProximityChat.SecretAPI.Settings;
 using SecretAPI.Features.UserSettings;
 
@@ -15,6 +17,8 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
     public override Version Version => GetType().Assembly.GetName().Version;
     public override Version RequiredApiVersion { get; } = new(1, 0, 0);
 
+    private readonly PersonalizationEventHandlers _handlers = new();
+
     public override void Enable()
     {
         ProximityChatEvents.Available += SendAvailableHint;
@@ -24,12 +28,14 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
             return;
         SettingsRegistry.All.Add(SettingsRegistry.PersonalizationVisibility);
         CustomSetting.Register(SettingsRegistry.PersonalizationVisibility);
+        CustomHandlersManager.RegisterEventsHandler(_handlers);
     }
 
     public override void Disable()
     {
         ProximityChatEvents.Available -= SendAvailableHint;
         ProximityChatEvents.Receiving -= Receiving;
+        CustomHandlersManager.UnregisterEventsHandler(_handlers);
         CustomSetting.UnRegister(SettingsRegistry.All);
     }
 

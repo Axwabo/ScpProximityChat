@@ -4,6 +4,7 @@ using SecretLabNAudio.Core;
 
 namespace ScpProximityChat.Core;
 
+[Serializable]
 public sealed class ProximityChatConfig
 {
 
