@@ -1,6 +1,6 @@
 namespace ScpProximityChat.SecretAPI.Settings;
 
-public static class Hints
+internal static class Hints
 {
 
     public const string Toggle = "Enable/disable using Proximity Chat while you're an SCP.";
