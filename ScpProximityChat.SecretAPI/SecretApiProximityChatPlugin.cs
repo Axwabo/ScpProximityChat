@@ -29,12 +29,14 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
         SettingsRegistry.All.Add(SettingsRegistry.PersonalizationVisibility);
         CustomSetting.Register(SettingsRegistry.PersonalizationVisibility);
         CustomHandlersManager.RegisterEventsHandler(_handlers);
+        ProximityChatEvents.Personalizing += PersonalizationManager.ConfigureAll;
     }
 
     public override void Disable()
     {
         ProximityChatEvents.Available -= SendAvailableHint;
         ProximityChatEvents.Receiving -= Receiving;
+        ProximityChatEvents.Personalizing -= PersonalizationManager.ConfigureAll;
         CustomHandlersManager.UnregisterEventsHandler(_handlers);
         CustomSetting.UnRegister(SettingsRegistry.All);
     }

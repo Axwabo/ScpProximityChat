@@ -1,5 +1,4 @@
-﻿using SecretLabNAudio.Core;
-using SecretLabNAudio.Core.Extensions;
+﻿using SecretLabNAudio.Core.Extensions;
 using SecretLabNAudio.Core.Pools;
 
 namespace ScpProximityChat.Core;
@@ -8,8 +7,6 @@ public static class ProximityChatState
 {
 
     public static List<Func<Player, bool>> Conditions { get; } = [];
-
-    public static Action<SpeakerPersonalization>? ConfigurePersonalization { get; set; }
 
     internal static Dictionary<Player, SpeakerToy> ActiveSpeakers { get; } = [];
 
@@ -22,8 +19,7 @@ public static class ProximityChatState
         var toy = SpeakerToyPool.Rent(player.GameObject.transform)
             .WithId(SpeakerToyPool.NextAvailableId)
             .ApplySettings(ProximityChatPlugin.Cfg.AudioSettings);
-        if (ConfigurePersonalization != null)
-            toy.AddPersonalization(ConfigurePersonalization);
+        ProximityChatEvents.Personalize(player, toy);
         ActiveSpeakers.Add(player, toy);
         return true;
     }
