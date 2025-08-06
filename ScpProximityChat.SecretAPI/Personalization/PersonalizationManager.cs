@@ -37,7 +37,7 @@ public static class PersonalizationManager
 
     public static void Register(Player player)
     {
-        if (!player.IsReady)
+        if (!player.IsReady || string.IsNullOrEmpty(player.UserId))
             return;
         var setting = new PersonalizedVolume(player);
         if (!SettingsRegistry.All.Add(setting))
@@ -48,6 +48,8 @@ public static class PersonalizationManager
 
     public static void Unregister(Player player)
     {
+        if (string.IsNullOrEmpty(player.UserId))
+            return;
         PersonalizationInstances.Remove(player.UserId);
         var setting = CustomSetting.CustomSettings.FirstOrDefault(e => e is PersonalizedVolume volume && volume.UserId == player.UserId);
         if (setting == null)
@@ -59,6 +61,8 @@ public static class PersonalizationManager
 
     public static void ConfigureAll(Player source, SpeakerPersonalization personalization)
     {
+        if (!source.IsReady || string.IsNullOrEmpty(source.UserId))
+            return;
         PersonalizationInstances[source.UserId] = personalization;
         var defaultSettings = ProximityChatPlugin.Cfg.AudioSettings;
         foreach (var target in Player.ReadyList)
