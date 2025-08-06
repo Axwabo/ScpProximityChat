@@ -19,10 +19,10 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
     {
         ProximityChatEvents.Available += SendAvailableHint;
         ProximityChatEvents.Receiving += Receiving;
-        CustomSetting.Register(SettingsRegistry.Toggle);
-        CustomSetting.Register(SettingsRegistry.Mute);
+        CustomSetting.Register(SettingsRegistry.Toggle, SettingsRegistry.Mute);
         if (!Config!.Personalization)
             return;
+        SettingsRegistry.All.Add(SettingsRegistry.PersonalizationVisibility);
         CustomSetting.Register(SettingsRegistry.PersonalizationVisibility);
     }
 

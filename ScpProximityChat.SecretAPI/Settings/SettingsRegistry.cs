@@ -11,6 +11,6 @@ internal static class SettingsRegistry
 
     public static PersonalizationVisibility PersonalizationVisibility { get; } = new();
 
-    public static HashSet<CustomSetting> All { get; } = [Toggle, Mute, PersonalizationVisibility];
+    public static HashSet<CustomSetting> All { get; } = [Toggle, Mute];
 
 }
