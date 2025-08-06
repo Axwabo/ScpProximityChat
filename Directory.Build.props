@@ -30,6 +30,7 @@
         <Using Include="System" />
         <Using Include="System.Collections.Generic" />
         <Using Include="LabApi.Features.Wrappers" />
+        <Using Include="UnityEngine" />
     </ItemGroup>
 
 </Project>

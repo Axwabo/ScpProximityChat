@@ -1,6 +1,5 @@
 ﻿using ScpProximityChat.Core;
 using SecretAPI.Features.UserSettings;
-using UnityEngine;
 
 namespace ScpProximityChat.SecretAPI.Settings;
 

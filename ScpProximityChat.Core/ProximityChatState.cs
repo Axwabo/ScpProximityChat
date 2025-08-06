@@ -16,10 +16,13 @@ public static class ProximityChatState
     {
         if (player.IsProximityChatEnabled())
             return false;
+        var config = ProximityChatPlugin.Cfg;
         var toy = SpeakerToyPool.Rent(player.GameObject.transform)
             .WithId(SpeakerToyPool.NextAvailableId)
-            .ApplySettings(ProximityChatPlugin.Cfg.AudioSettings);
+            .ApplySettings(config.AudioSettings);
         ProximityChatEvents.Personalize(player, toy);
+        if (!Mathf.Approximately(config.VolumeBoost, 0))
+            VolumeBoost.GetOrAdd(player);
         ActiveSpeakers.Add(player, toy);
         return true;
     }
