@@ -20,7 +20,7 @@ public sealed class PersonalizedVolume : CustomSliderSetting
         PersonalizationManager.LabelFor(name),
         0,
         100,
-        100,
+        PersonalizationManager.DefaultVolume,
         true,
         "0'%'"
     )

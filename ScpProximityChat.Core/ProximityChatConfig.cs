@@ -12,7 +12,7 @@ public sealed class ProximityChatConfig
 
     public bool ShowToggledHint { get; set; } = true;
 
-    [Description("Volume multipler. Set to 0 to disable boosting.")]
+    [Description("Global volume multipler (min 0, max 2). Set to 0 to disable boosting.")]
     public float VolumeBoost
     {
         get => _boost;

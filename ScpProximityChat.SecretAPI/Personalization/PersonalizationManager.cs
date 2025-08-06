@@ -16,6 +16,8 @@ public static class PersonalizationManager
 
     private static readonly Dictionary<string, SpeakerPersonalization> PersonalizationInstances = [];
 
+    public static float DefaultVolume { get; set; } = 100;
+
     public static int IdFor(string userId)
         => IdHashes.TryGetValue(userId, out var hash)
             ? hash

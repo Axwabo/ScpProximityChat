@@ -26,6 +26,7 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
         CustomSetting.Register(SettingsRegistry.Toggle, SettingsRegistry.Mute);
         if (!Config!.Personalization)
             return;
+        PersonalizationManager.DefaultVolume = Config.DefaultVolume;
         SettingsRegistry.All.Add(SettingsRegistry.PersonalizationVisibility);
         CustomSetting.Register(SettingsRegistry.PersonalizationVisibility);
         CustomHandlersManager.RegisterEventsHandler(_handlers);
