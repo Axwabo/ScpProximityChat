@@ -32,11 +32,12 @@ internal sealed class EventHandlers : CustomEventsHandler
         ev.IsAllowed = false;
         var message = VolumeBoost.Convert(ev.Player, ev.Message);
         message.ControllerId = speaker.ControllerId;
+        var validate = ProximityChatPlugin.Cfg.ValidateReceive;
         foreach (var player in Player.ReadyList)
         {
             if (player == ev.Player)
                 continue;
-            var allow = true;
+            var allow = !validate || player.VoiceModule?.ValidateReceive(ev.Player.ReferenceHub, VoiceChatChannel.Proximity) != VoiceChatChannel.None;
             ProximityChatEvents.OnReceiving(ev.Player, player, ref allow);
             if (allow)
                 player.Connection.Send(message);

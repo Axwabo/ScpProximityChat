@@ -8,7 +8,7 @@ namespace ScpProximityChat.Core;
 public sealed class ProximityChatConfig
 {
 
-    private float _boost = Mathf.Sqrt(2); // +3dB for client-side bug, see LabApi.Features.Audio.AudioTransmitter
+    private float _boost;
 
     public bool ShowToggledHint { get; set; } = true;
 
@@ -25,7 +25,10 @@ public sealed class ProximityChatConfig
 
     public SpeakerSettings AudioSettings { get; set; } = SpeakerSettings.Default;
 
-    [Description("Set to null to use the default condition (all SCPs except SCP-079 and SCP-3114)")]
+    [Description("Set to null to use the default condition (all SCPs except SCP-079 and SCP-3114).")]
     public List<RoleTypeId>? AllowedRoles { get; set; }
+
+    [Description("Set to true if the receivers' voice modules should filter whether a player receives the message. Might mess with AudioSettings, but can counter cheaters.")]
+    public bool ValidateReceive { get; set; }
 
 }
