@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Mirror;
-using ScpProximityChat.Core;
+﻿using Mirror;
 using ScpProximityChat.SecretAPI.Settings;
 using SecretAPI.Features.UserSettings;
 using SecretLabNAudio.Core;
@@ -15,8 +13,6 @@ public static class PersonalizationManager
     private static readonly Dictionary<string, int> IdHashes = [];
 
     private static readonly Dictionary<string, SpeakerPersonalization> PersonalizationInstances = [];
-
-    public static int DefaultVolume { get; set; } = 100;
 
     public static int IdFor(string userId)
         => IdHashes.TryGetValue(userId, out var hash)
@@ -53,7 +49,7 @@ public static class PersonalizationManager
         if (string.IsNullOrEmpty(player.UserId))
             return;
         PersonalizationInstances.Remove(player.UserId);
-        var setting = CustomSetting.CustomSettings.FirstOrDefault(e => e is PersonalizedVolume volume && volume.UserId == player.UserId);
+        var setting = CustomSetting.CustomSettings.FindVolumeSetting(player.UserId);
         if (setting == null)
             return;
         CustomSetting.CustomSettings.Remove(setting);
@@ -61,21 +57,26 @@ public static class PersonalizationManager
         CustomSetting.ResyncServer();
     }
 
-    public static void ConfigureAll(Player source, SpeakerPersonalization personalization)
+    public static void RegisterPersonalization(Player source, SpeakerPersonalization personalization)
     {
         if (!source.IsReady || string.IsNullOrEmpty(source.UserId))
             return;
         PersonalizationInstances[source.UserId] = personalization;
-        var defaultSettings = ProximityChatPlugin.Cfg.AudioSettings;
         foreach (var target in Player.ReadyList)
-            if (target != source && CustomSetting.TryGetPlayerSetting(target, out PersonalizedVolume? volume))
-                personalization.Override(target, defaultSettings with {Volume = volume.Volume});
+            if (target != source)
+                personalization.OverrideVolume(target, VolumeHelpers.Personalized(target, source.UserId));
     }
 
     public static void Configure(Player receiver, string sourceId, float volume)
     {
         if (PersonalizationInstances.TryGetValue(sourceId, out var personalization))
-            personalization.Override(receiver, SpeakerSettings.From(personalization) with {Volume = volume});
+            personalization.OverrideVolume(receiver, volume * VolumeHelpers.Master(receiver));
+    }
+
+    public static void ConfigureAll(Player receiver)
+    {
+        foreach (var kvp in PersonalizationInstances)
+            kvp.Value.OverrideVolume(receiver, VolumeHelpers.Personalized(receiver, kvp.Key));
     }
 
 }

@@ -13,7 +13,4 @@ public sealed class SecretApiProximityChatConfig
     [Description("Whether players can adjust the volume of others' proximity messages.")]
     public bool Personalization { get; set; } = true;
 
-    [Description("Default volume percentage if personalization is enabled.")]
-    public int DefaultVolume { get; set; } = 100;
-
 }

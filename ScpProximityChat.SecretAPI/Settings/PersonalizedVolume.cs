@@ -3,7 +3,7 @@ using SecretAPI.Features.UserSettings;
 
 namespace ScpProximityChat.SecretAPI.Settings;
 
-public sealed class PersonalizedVolume : CustomSliderSetting
+public sealed class PersonalizedVolume : VolumeSettingBase
 {
 
     public string Name { get; }
@@ -15,21 +15,11 @@ public sealed class PersonalizedVolume : CustomSliderSetting
     {
     }
 
-    public PersonalizedVolume(string name, string userId) : base(
-        PersonalizationManager.IdFor(userId),
-        PersonalizationManager.LabelFor(name),
-        0,
-        100,
-        PersonalizationManager.DefaultVolume,
-        true,
-        "0'%'"
-    )
+    public PersonalizedVolume(string name, string userId) : base(PersonalizationManager.IdFor(userId), PersonalizationManager.LabelFor(name), 100)
     {
         Name = name;
         UserId = userId;
     }
-
-    public float Volume => SelectedValueInt * 0.01f;
 
     protected override bool CanView(Player player)
     {

@@ -23,21 +23,20 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
     {
         ProximityChatEvents.Available += SendAvailableHint;
         ProximityChatEvents.Receiving += Receiving;
-        CustomSetting.Register(SettingsRegistry.Toggle, SettingsRegistry.Mute);
-        if (!Config!.Personalization)
+        ProximityChatEvents.Personalizing += PersonalizationManager.RegisterPersonalization;
+        CustomHandlersManager.RegisterEventsHandler(_handlers);
+        CustomSetting.Register(SettingsRegistry.Toggle, SettingsRegistry.Mute, SettingsRegistry.Master);
+        if (!(VolumeHelpers.CanPersonalize = Config!.Personalization))
             return;
-        PersonalizationManager.DefaultVolume = Config.DefaultVolume;
         SettingsRegistry.All.Add(SettingsRegistry.PersonalizationVisibility);
         CustomSetting.Register(SettingsRegistry.PersonalizationVisibility);
-        CustomHandlersManager.RegisterEventsHandler(_handlers);
-        ProximityChatEvents.Personalizing += PersonalizationManager.ConfigureAll;
     }
 
     public override void Disable()
     {
         ProximityChatEvents.Available -= SendAvailableHint;
         ProximityChatEvents.Receiving -= Receiving;
-        ProximityChatEvents.Personalizing -= PersonalizationManager.ConfigureAll;
+        ProximityChatEvents.Personalizing -= PersonalizationManager.RegisterPersonalization;
         CustomHandlersManager.UnregisterEventsHandler(_handlers);
         CustomSetting.UnRegister(SettingsRegistry.All);
     }
