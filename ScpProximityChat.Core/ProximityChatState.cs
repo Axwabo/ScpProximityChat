@@ -1,5 +1,4 @@
-﻿using SecretLabNAudio.Core.Extensions;
-using SecretLabNAudio.Core.Pools;
+﻿using SecretLabNAudio.Core.Pools;
 
 namespace ScpProximityChat.Core;
 
@@ -17,9 +16,7 @@ public static class ProximityChatState
         if (player.IsProximityChatEnabled())
             return false;
         var config = ProximityChatPlugin.Cfg;
-        var toy = SpeakerToyPool.Rent(player.GameObject.transform)
-            .WithId(SpeakerToyPool.NextAvailableId)
-            .ApplySettings(config.AudioSettings);
+        var toy = SpeakerToyPool.Rent(SpeakerToyPool.NextAvailableId, config.AudioSettings, player.GameObject.transform);
         ProximityChatEvents.Personalize(player, toy);
         if (!Mathf.Approximately(config.VolumeBoost, 0))
             VolumeBoost.GetOrAdd(player);

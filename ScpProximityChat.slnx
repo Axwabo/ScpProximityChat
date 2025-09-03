@@ -1,0 +1,4 @@
+<Solution>
+    <Project Path="ScpProximityChat.Core/ScpProximityChat.Core.csproj" />
+    <Project Path="ScpProximityChat.SecretAPI/ScpProximityChat.SecretAPI.csproj" />
+</Solution>
