@@ -1,6 +1,6 @@
 ﻿namespace ScpProximityChat.SecretAPI.Settings;
 
-public sealed class PersonalizationVisibility : CustomTwoButtonSetting
+internal sealed class PersonalizationVisibility : CustomTwoButtonSetting
 {
 
     private bool _previouslyVisible;

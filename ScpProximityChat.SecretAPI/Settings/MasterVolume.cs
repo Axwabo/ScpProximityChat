@@ -1,6 +1,6 @@
 ﻿namespace ScpProximityChat.SecretAPI.Settings;
 
-public sealed class MasterVolume : VolumeSettingBase
+internal sealed class MasterVolume : VolumeSettingBase
 {
 
     public MasterVolume() : base(null, "Master Volume", ProximityChatPlugin.Cfg.AudioSettings.Volume, "Overall volume of SCP Proximity Chat.")

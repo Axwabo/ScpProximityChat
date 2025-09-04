@@ -18,7 +18,7 @@ public static class VolumeHelpers
             ? volume * Master(receiver)
             : Master(receiver);
 
-    public static PersonalizedVolume? FindVolumeSetting(this List<CustomSetting> collection, string userId)
+    internal static PersonalizedVolume? FindVolumeSetting(this List<CustomSetting> collection, string userId)
         => collection.OfType<PersonalizedVolume>().FirstOrDefault(e => e.UserId == userId);
 
     public static void OverrideVolume(this SpeakerPersonalization personalization, Player receiver, float volume)

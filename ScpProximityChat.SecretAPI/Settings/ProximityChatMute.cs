@@ -1,6 +1,6 @@
 ﻿namespace ScpProximityChat.SecretAPI.Settings;
 
-public sealed class ProximityChatMute : CustomTwoButtonSetting
+internal sealed class ProximityChatMute : CustomTwoButtonSetting
 {
 
     public ProximityChatMute() : base(null, "Others' Proximity Chat", "Audible", "Muted", hint: Hints.Mute)

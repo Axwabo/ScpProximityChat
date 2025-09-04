@@ -4,17 +4,28 @@ using LabApi.Loader.Features.Plugins;
 
 namespace ScpProximityChat.SecretAPI;
 
+/// <summary>An extension plugin for the Core that adds SSSS-based toggling and personalization.</summary>
 public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChatConfig>
 {
 
+    /// <inheritdoc/>
     public override string Name => "SSSS Proximity Chat";
-    public override string Description => "SSSS-based proximity chat";
+
+    /// <inheritdoc/>
+    public override string Description => "SSSS-based Proximity Chat";
+
+    /// <inheritdoc/>
     public override string Author => "Axwabo";
+
+    /// <inheritdoc/>
     public override Version Version => GetType().Assembly.GetName().Version;
+
+    /// <inheritdoc/>
     public override Version RequiredApiVersion { get; } = new(1, 0, 0);
 
     private readonly PersonalizationEventHandlers _handlers = new();
 
+    /// <inheritdoc/>
     public override void Enable()
     {
         ProximityChatEvents.Available += SendAvailableHint;
@@ -28,6 +39,7 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
         CustomSetting.Register(SettingsRegistry.PersonalizationVisibility);
     }
 
+    /// <inheritdoc/>
     public override void Disable()
     {
         ProximityChatEvents.Available -= SendAvailableHint;

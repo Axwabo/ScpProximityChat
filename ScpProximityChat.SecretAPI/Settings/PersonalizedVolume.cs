@@ -1,6 +1,6 @@
 ﻿namespace ScpProximityChat.SecretAPI.Settings;
 
-public sealed class PersonalizedVolume : VolumeSettingBase
+internal sealed class PersonalizedVolume : VolumeSettingBase
 {
 
     public string Name { get; }

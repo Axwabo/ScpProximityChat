@@ -1,6 +1,6 @@
 ﻿namespace ScpProximityChat.SecretAPI.Settings;
 
-public abstract class VolumeSettingBase : CustomSliderSetting
+internal abstract class VolumeSettingBase : CustomSliderSetting
 {
 
     protected VolumeSettingBase(int? id, string label, float defaultValue, string? hint = null)
