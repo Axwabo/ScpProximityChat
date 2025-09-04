@@ -2,6 +2,9 @@
 
 namespace ScpProximityChat.Core;
 
+/// <summary>Events related to SCP Proximity Chat.</summary>
+/// <seealso cref="ProximityChatState.Conditions"/>
+/// <seealso cref="ProximityChatState.CanUseProximityChat"/>
 public static class ProximityChatEvents
 {
 
