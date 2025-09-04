@@ -30,6 +30,8 @@ internal sealed class EventHandlers : CustomEventsHandler
         if (ev.Message.Channel != VoiceChatChannel.ScpChat || !ProximityChatState.ActiveSpeakers.TryGetValue(ev.Player, out var speaker))
             return;
         ev.IsAllowed = false;
+        var send = true;
+        ProximityChatEvents.OnSending(ev.Player, ref send);
         var message = VolumeBoost.Convert(ev.Player, ev.Message);
         message.ControllerId = speaker.ControllerId;
         var validate = ProximityChatPlugin.Cfg.ValidateReceive;

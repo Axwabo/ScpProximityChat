@@ -55,7 +55,7 @@ public static class ProximityChatState
     /// <summary>Toggles the Proximity Chat state of the player.</summary>
     /// <param name="player">True if Proximity Chat has been enabled, false if it's been disabled.</param>
     /// <returns>Whether Proximity Chat is now enabled.</returns>
-    /// <remarks>This method does not check if the player can use Proximity Chat.</remarks
+    /// <remarks>This method does not check if the player can use Proximity Chat.</remarks>
     /// <seealso cref="CanUseProximityChat"/>
     /// <seealso cref="EnableProximityChat"/>
     /// <seealso cref="DisableProximityChat"/>

@@ -4,31 +4,39 @@ using SecretLabNAudio.Core;
 
 namespace ScpProximityChat.Core;
 
+/// <summary>Configuration for SCP Proximity Chat.</summary>
 [Serializable]
 public sealed class ProximityChatConfig
 {
 
     private float _boost;
 
+    /// <summary>Whether to show a simple hint when a player toggles Proximity Chat.</summary>
     public bool ShowToggledHint { get; set; } = true;
 
-    [Description("Global volume multipler (min 0, max 2). Set to 0 to disable boosting.")]
+    /// <summary>Message shown when Proximity Chat is enabled.</summary>
+    public string Enabled { get; set; } = "Proximity Chat enabled.";
+
+    /// <summary>Message shown when Proximity Chat is disabled.</summary>
+    public string Disabled { get; set; } = "Proximity Chat disabled.";
+
+    /// <summary>Audio settings for the speaker toy used for Proximity Chat.</summary>
+    public SpeakerSettings AudioSettings { get; set; } = SpeakerSettings.Default;
+
+    /// <summary>List of roles allowed to use Proximity Chat. Set to null to use the default condition (all SCPs except SCP-079 and SCP-3114).</summary>
+    [Description("Set to null to use the default condition (all SCPs except SCP-079 and SCP-3114).")]
+    public List<RoleTypeId>? AllowedRoles { get; set; }
+
+    /// <summary>Whether the receivers' voice modules should filter whether a player receives the message.</summary>
+    [Description("Set to true if the receivers' voice modules should filter whether a player receives the message. Might mess with AudioSettings, but can counter cheaters.")]
+    public bool ValidateReceive { get; set; }
+
+    /// <summary>Global volume boost.</summary>
+    [Description("Global volume boost (min 0, max 2). Set to 0 to disable boosting.")]
     public float VolumeBoost
     {
         get => _boost;
         set => _boost = Mathf.Clamp(value, 0, 2);
     }
-
-    public string Enabled { get; set; } = "Proximity Chat enabled.";
-
-    public string Disabled { get; set; } = "Proximity Chat disabled.";
-
-    public SpeakerSettings AudioSettings { get; set; } = SpeakerSettings.Default;
-
-    [Description("Set to null to use the default condition (all SCPs except SCP-079 and SCP-3114).")]
-    public List<RoleTypeId>? AllowedRoles { get; set; }
-
-    [Description("Set to true if the receivers' voice modules should filter whether a player receives the message. Might mess with AudioSettings, but can counter cheaters.")]
-    public bool ValidateReceive { get; set; }
 
 }
