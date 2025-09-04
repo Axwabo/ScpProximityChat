@@ -1,7 +1,4 @@
 ﻿using System.Linq;
-using ScpProximityChat.Core;
-using ScpProximityChat.SecretAPI.Settings;
-using SecretAPI.Features.UserSettings;
 using SecretLabNAudio.Core;
 
 namespace ScpProximityChat.SecretAPI.Personalization;

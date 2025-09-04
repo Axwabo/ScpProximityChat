@@ -1,10 +1,6 @@
 ﻿using Hints;
 using LabApi.Events.CustomHandlers;
 using LabApi.Loader.Features.Plugins;
-using ScpProximityChat.Core;
-using ScpProximityChat.SecretAPI.Personalization;
-using ScpProximityChat.SecretAPI.Settings;
-using SecretAPI.Features.UserSettings;
 
 namespace ScpProximityChat.SecretAPI;
 

@@ -1,7 +1,4 @@
-﻿using ScpProximityChat.SecretAPI.Personalization;
-using SecretAPI.Features.UserSettings;
-
-namespace ScpProximityChat.SecretAPI.Settings;
+﻿namespace ScpProximityChat.SecretAPI.Settings;
 
 public sealed class PersonalizedVolume : VolumeSettingBase
 {

@@ -1,6 +1,4 @@
 ﻿using Mirror;
-using ScpProximityChat.SecretAPI.Settings;
-using SecretAPI.Features.UserSettings;
 using SecretLabNAudio.Core;
 
 namespace ScpProximityChat.SecretAPI.Personalization;
