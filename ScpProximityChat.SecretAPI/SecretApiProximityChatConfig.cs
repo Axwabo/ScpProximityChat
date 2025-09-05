@@ -14,8 +14,12 @@ public sealed class SecretApiProximityChatConfig
     [Description("Use \"{0}\" where the keybind should be displayed.")]
     public string AvailableHint { get; set; } = "\n\n\n\n\n\nSCP Proximity Chat available.\nPress <mark=#77777755><size=0>.</size><space=0.2em><b>{0}</b><space=0.2em><size=0>.</size></mark> to toggle.";
 
-    /// <summary>Whether players can adjust the volume of others' proximity messages.</summary>
-    [Description("Whether players can adjust the volume of others' proximity messages.")]
+    /// <summary>Whether the same settings should apply on all servers under the same account ID.</summary>
+    [Description("Whether the same settings should apply on all servers under the same account ID.")]
+    public bool Shared { get; set; } = true;
+    
+    /// <summary>Whether players should be able to adjust the volume of others' proximity messages.</summary>
+    [Description("Whether players should be able to adjust the volume of others' proximity messages.")]
     public bool Personalization { get; set; } = true;
 
 }

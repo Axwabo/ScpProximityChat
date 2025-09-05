@@ -6,8 +6,7 @@ internal sealed class PersonalizationVisibility : CustomTwoButtonSetting
     private bool _previouslyVisible;
 
     public PersonalizationVisibility() : base(null, "Personalization Visibility", "Hidden", "Shown")
-    {
-    }
+        => IsShared = SettingsRegistry.Shared;
 
     public bool Visible => IsOptionB;
 

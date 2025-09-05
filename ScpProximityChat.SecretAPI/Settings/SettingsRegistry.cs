@@ -2,6 +2,8 @@
 
 internal static class SettingsRegistry
 {
+    
+    public static bool Shared { get; set; }
 
     public static ProximityChatToggle Toggle { get; } = new();
 
