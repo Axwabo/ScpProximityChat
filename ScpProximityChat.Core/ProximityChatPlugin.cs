@@ -41,7 +41,6 @@ public sealed class ProximityChatPlugin : Plugin<ProximityChatConfig>
         _instance = this;
         ProximityChatEvents.Toggled += OnToggled;
         CustomHandlersManager.RegisterEventsHandler(_eventHandlers);
-        VolumeBoost.Amount = Config!.VolumeBoost;
         var allowedRoles = Config!.AllowedRoles;
         if (allowedRoles == null)
             ProximityChatState.Conditions.Add(player => player.RoleBase is FpcStandardScp and not Scp3114Role);

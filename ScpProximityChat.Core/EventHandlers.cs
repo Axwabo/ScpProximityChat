@@ -1,17 +1,14 @@
 ﻿using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.CustomHandlers;
 using VoiceChat;
+using VoiceChat.Networking;
 
 namespace ScpProximityChat.Core;
 
 internal sealed class EventHandlers : CustomEventsHandler
 {
 
-    public override void OnPlayerLeft(PlayerLeftEventArgs ev)
-    {
-        ev.Player.DisableProximityChat();
-        VolumeBoost.Remove(ev.Player);
-    }
+    public override void OnPlayerLeft(PlayerLeftEventArgs ev) => ev.Player.DisableProximityChat();
 
     public override void OnPlayerChangedRole(PlayerChangedRoleEventArgs ev)
     {
@@ -32,8 +29,7 @@ internal sealed class EventHandlers : CustomEventsHandler
         ev.IsAllowed = false;
         var send = true;
         ProximityChatEvents.OnSending(ev.Player, ref send);
-        var message = VolumeBoost.Convert(ev.Player, ev.Message);
-        message.ControllerId = speaker.ControllerId;
+        var message = new AudioMessage(speaker.ControllerId, ev.Message.Data, ev.Message.DataLength);
         var validate = ProximityChatPlugin.Cfg.ValidateReceive;
         foreach (var player in Player.ReadyList)
         {
