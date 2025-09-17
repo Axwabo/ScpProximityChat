@@ -9,8 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Northwood.LabAPI" Version="1.1.1" />
-        <PackageReference Include="SecretLabNAudio.Core" Version="1.0.1" />
+        <PackageReference Include="SecretLabNAudio.Core" />
     </ItemGroup>
 
     <ItemGroup>
