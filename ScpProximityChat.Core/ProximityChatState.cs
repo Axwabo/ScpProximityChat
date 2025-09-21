@@ -19,17 +19,17 @@ public static class ProximityChatState
 
     /// <summary>Enables Proximity Chat for the player.</summary>
     /// <param name="player">The player to enable Proximity Chat for.</param>
-    /// <returns>True if Proximity Chat has been enabled, false if it's already enabled.</returns>
+    /// <returns>True if Proximity Chat has been enabled, false if it's already enabled or if the player has been destroyed.</returns>
     /// <remarks>This method does not check if the player can use Proximity Chat.</remarks>
     /// <seealso cref="CanUseProximityChat"/>
     /// <seealso cref="DisableProximityChat"/>
     /// <seealso cref="ToggleProximityChat"/>
     public static bool EnableProximityChat(this Player player)
     {
-        if (player.IsProximityChatEnabled())
+        if (player.IsProximityChatEnabled() || player.IsDestroyed)
             return false;
         var config = ProximityChatPlugin.Cfg;
-        var toy = SpeakerToyPool.Rent(SpeakerToyPool.NextAvailableId, config.AudioSettings, player.GameObject.transform);
+        var toy = SpeakerToyPool.Rent(SpeakerToyPool.NextAvailableId, config.AudioSettings, player.GameObject!.transform);
         ProximityChatEvents.Personalize(player, toy);
         ActiveSpeakers.Add(player, toy);
         return true;
@@ -51,7 +51,7 @@ public static class ProximityChatState
     }
 
     /// <summary>Toggles the Proximity Chat state of the player.</summary>
-    /// <param name="player">True if Proximity Chat has been enabled, false if it's been disabled.</param>
+    /// <param name="player">True if Proximity Chat has been enabled, false if it's been disabled or if the player has been destroyed.</param>
     /// <returns>Whether Proximity Chat is now enabled.</returns>
     /// <remarks>This method does not check if the player can use Proximity Chat.</remarks>
     /// <seealso cref="CanUseProximityChat"/>
@@ -59,6 +59,8 @@ public static class ProximityChatState
     /// <seealso cref="DisableProximityChat"/>
     public static bool ToggleProximityChat(this Player player)
     {
+        if (player.IsDestroyed)
+            return false;
         if (player.DisableProximityChat())
         {
             ProximityChatEvents.OnToggled(player, false);
