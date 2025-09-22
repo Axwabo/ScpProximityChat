@@ -8,6 +8,10 @@ namespace ScpProximityChat.SecretAPI;
 public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChatConfig>
 {
 
+    /// <summary>The setting ID of the toggle keybind.</summary>
+    /// <remarks>Can be used to create an <see cref="SSKeybindHintParameter"/>.</remarks>
+    public static int ToggleSettingId => SettingsRegistry.Toggle.Id;
+
     /// <inheritdoc/>
     public override string Name => "SSSS Proximity Chat";
 
@@ -55,7 +59,7 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
         if (Config!.ShowAvailableHint)
             player.SendHint(
                 Config.AvailableHint,
-                [new SSKeybindHintParameter(SettingsRegistry.Toggle.Id)],
+                [new SSKeybindHintParameter(ToggleSettingId)],
                 HintEffectPresets.FadeInAndOut(0.95f),
                 10
             );
