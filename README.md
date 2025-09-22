@@ -39,10 +39,6 @@ and they can control the volume of other players' Proximity Chat on their client
 
 ## SSSS
 
-> [!IMPORTANT]
-> SecretAPI overwrites the base-game SSSS system.
-> Other plugins using Server-Specific Settings without SecretAPI will be broken.
-
 0. Install [ScpProximityChat.Core](#core)
 1. Download the `SecretAPI.dll` file from the [SecretAPI releases page](https://github.com/Misfiy/SecretAPI/releases)
 2. Download the `ScpProximityChat.SecretAPI.dll` from the [releases page](https://github.com/Axwabo/ScpProximityChat/releases)
