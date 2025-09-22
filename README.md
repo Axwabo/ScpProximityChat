@@ -21,8 +21,8 @@ and they can control the volume of other players' Proximity Chat on their client
 ## Core
 
 > [!NOTE]
-> You don't need to install every module of `SecretLabNAudio` - only the core is required.
-> It's needed to enable SpeakerToy pooling and personalization.
+> `SecretLabNAudio.Core` is required to enable SpeakerToy pooling and personalization.
+> You don't need modules or dependencies of `SecretLabNAudio` - only the core is required, not even `NAudio.Core`
 >
 > If you've already installed the full SecretLabNAudio plugin, you can skip the first two steps.
 
