@@ -157,6 +157,8 @@ The `Master Volume` setting will always be available regardless of this configur
 
 Reference the `ScpProximityChat.Core.dll` file from the [releases page](https://github.com/Axwabo/ScpProximityChat/releases)
 
+It's encouraged to download the `xml` documentation to help clarify what things do.
+
 ## Methods
 
 To define custom conditions that must be met to use SCP Proximity Chat, use the `ProximityChatState.Conditions` list.
