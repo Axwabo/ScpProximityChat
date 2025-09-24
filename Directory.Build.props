@@ -1,11 +1,12 @@
 <Project>
 
     <PropertyGroup>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
         <TargetFramework>net48</TargetFramework>
         <LangVersion>13</LangVersion>
         <Nullable>enable</Nullable>
-        <DIsableImplicitFrameworkReferences>true</DIsableImplicitFrameworkReferences>
+        <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
