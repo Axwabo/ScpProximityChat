@@ -30,6 +30,9 @@ internal sealed class EventHandlers : CustomEventsHandler
         ev.IsAllowed = false;
         var send = true;
         ProximityChatEvents.OnSending(ev.Player, ref send);
+        if (!send)
+            return;
+        ev.Player.VoiceModule!.CurrentChannel = VoiceChatChannel.Proximity;
         var message = new AudioMessage(speaker.ControllerId, ev.Message.Data, ev.Message.DataLength);
         var validate = ProximityChatPlugin.Cfg.ValidateReceive;
         var spectators = ProximityChatPlugin.Cfg.AudibleToSpectators;
