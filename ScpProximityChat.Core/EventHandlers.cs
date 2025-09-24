@@ -1,5 +1,6 @@
 ﻿using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.CustomHandlers;
+using PlayerRoles;
 using VoiceChat;
 using VoiceChat.Networking;
 
@@ -31,17 +32,20 @@ internal sealed class EventHandlers : CustomEventsHandler
         ProximityChatEvents.OnSending(ev.Player, ref send);
         var message = new AudioMessage(speaker.ControllerId, ev.Message.Data, ev.Message.DataLength);
         var validate = ProximityChatPlugin.Cfg.ValidateReceive;
+        var spectators = ProximityChatPlugin.Cfg.AudibleToSpectators;
         foreach (var player in Player.ReadyList)
-        {
-            if (player == ev.Player)
-                continue;
-            var allow = !validate || player.VoiceModule?.ValidateReceive(ev.Player.ReferenceHub, VoiceChatChannel.Proximity) != VoiceChatChannel.None;
-            ProximityChatEvents.OnReceiving(ev.Player, player, ref allow);
-            if (allow)
+            if (player != ev.Player && AllowReceive(ev, player, validate, spectators))
                 player.Connection.Send(message);
-        }
     }
 
     public override void OnServerWaitingForPlayers() => ProximityChatState.ActiveSpeakers.Clear();
+
+    private static bool AllowReceive(PlayerSendingVoiceMessageEventArgs ev, Player receiver, bool validate, bool spectators)
+    {
+        var allow = (!validate || receiver.VoiceModule?.ValidateReceive(ev.Player.ReferenceHub, VoiceChatChannel.Proximity) != VoiceChatChannel.None)
+                    && (spectators || receiver.Role != RoleTypeId.Spectator);
+        ProximityChatEvents.OnReceiving(ev.Player, receiver, ref allow);
+        return allow;
+    }
 
 }

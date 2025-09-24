@@ -15,7 +15,7 @@ internal sealed class PersonalizationVisibility : CustomTwoButtonSetting
     protected override void HandleSettingUpdate()
     {
         if (_previouslyVisible != Visible)
-            SendSettingsToPlayer(KnownOwner!);
+            ResyncToOwner();
         _previouslyVisible = Visible;
     }
 

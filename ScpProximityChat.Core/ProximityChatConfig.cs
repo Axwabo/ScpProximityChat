@@ -29,4 +29,8 @@ public sealed class ProximityChatConfig
     [Description("Set to true if the receivers' voice modules should filter whether a player receives the message. Might mess with AudioSettings, but can counter cheaters.")]
     public bool ValidateReceive { get; set; }
 
+    /// <summary>Whether spectators should be able to hear Proximity Chat.</summary>
+    [Description("Set to false to disable spectators receiving Proximity Chat audio.")]
+    public bool AudibleToSpectators { get; set; } = true;
+
 }
