@@ -1,6 +1,7 @@
 <Project>
 
     <PropertyGroup>
+        <Version>1.0.1</Version>
         <TargetFramework>net48</TargetFramework>
         <LangVersion>13</LangVersion>
         <Nullable>enable</Nullable>

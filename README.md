@@ -108,7 +108,6 @@ allowed_roles:
   - ChaosRifleman
   - ChaosMarauder
   - ChaosRepressor
-  - Overwatch
   - Scp3114
   - Flamingo
   - AlphaFlamingo
@@ -120,6 +119,12 @@ allowed_roles:
 Set to `true` to enable base-game receiving checks.
 
 Might mess with AudioSettings, but can counter cheaters.
+
+### `AudibleToSpectators`
+
+Set to `false` to prevent spectators from hearing Proximity Chat.
+
+This does not affect `Overwatch` roles.
 
 ## SSSS Config
 
