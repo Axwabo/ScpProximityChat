@@ -12,7 +12,7 @@ internal sealed class PersonalizedVolume : VolumeSettingBase
     {
     }
 
-    public PersonalizedVolume(string name, string userId) : base(PersonalizationManager.IdFor(userId), PersonalizationManager.LabelFor(name), 100)
+    public PersonalizedVolume(string name, string userId) : base(PersonalizationManager.IdFor(userId), PersonalizationManager.LabelFor(name))
     {
         Name = name;
         UserId = userId;
