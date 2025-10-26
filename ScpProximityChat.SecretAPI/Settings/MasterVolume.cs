@@ -3,7 +3,7 @@
 internal sealed class MasterVolume : VolumeSettingBase
 {
 
-    public MasterVolume() : base(null, "Master Volume", ProximityChatPlugin.Cfg.AudioSettings.Volume, "Overall volume of SCP Proximity Chat.")
+    public MasterVolume() : base(null, "Master Volume", ProximityChatPlugin.Cfg.AudioSettings.Volume * 100, "Overall volume of SCP Proximity Chat.")
     {
     }
 
