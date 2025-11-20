@@ -3,7 +3,9 @@
 internal sealed class MasterVolume : VolumeSettingBase
 {
 
-    public MasterVolume() : base(null, Translation.MasterVolumeLabel, Translation.MasterVolumeHint)
+    public const string Text = "Master Volume";
+
+    public MasterVolume() : base(Text.GetStableHashCode(), Translation.MasterVolumeLabel, Translation.MasterVolumeHint)
     {
     }
 

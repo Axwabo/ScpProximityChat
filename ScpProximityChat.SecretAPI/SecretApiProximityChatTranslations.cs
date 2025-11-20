@@ -8,11 +8,11 @@ internal sealed class SecretApiProximityChatTranslations
 
     public string PersonalizationHeader { get; set; } = "Proximity Volume Personalization";
 
-    public string ToggleLabel { get; set; } = "Toggle SCP Proximity Chat";
+    public string ToggleLabel { get; set; } = ProximityChatToggle.Text;
 
     public string ToggleHint { get; set; } = "Enable/disable using Proximity Chat while you're an SCP.";
 
-    public string MuteLabel { get; set; } = "Others' Proximity Chat";
+    public string MuteLabel { get; set; } = ProximityChatMute.Text;
 
     public string MuteHint { get; set; } = "Enable/disable hearing others' SCP Proximity Chat.";
 
@@ -20,13 +20,13 @@ internal sealed class SecretApiProximityChatTranslations
 
     public string Muted { get; set; } = "Muted";
 
-    public string PersonalizationVisibility { get; set; } = "Personalization Visibility";
+    public string PersonalizationVisibility { get; set; } = Settings.PersonalizationVisibility.Text;
 
     public string Shown { get; set; } = "Shown";
 
     public string Hidden { get; set; } = "Hidden";
 
-    public string MasterVolumeLabel { get; set; } = "Master Volume";
+    public string MasterVolumeLabel { get; set; } = MasterVolume.Text;
 
     public string MasterVolumeHint { get; set; } = "Overall volume of SCP Proximity Chat.";
 

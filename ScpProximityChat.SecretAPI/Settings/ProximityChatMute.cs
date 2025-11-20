@@ -3,8 +3,15 @@
 internal sealed class ProximityChatMute : CustomTwoButtonSetting
 {
 
-    public ProximityChatMute() : base(null, Translation.MuteLabel, Translation.Audible, Translation.Muted, hint: Translation.MuteHint)
-        => IsShared = SettingsRegistry.Shared;
+    public const string Text = "Others' Proximity Chat";
+
+    public ProximityChatMute() : base(
+        Text.GetStableHashCode(),
+        Translation.MuteLabel,
+        Translation.Audible,
+        Translation.Muted,
+        hint: Translation.MuteHint
+    ) => IsShared = SettingsRegistry.Shared;
 
     public bool Muted => IsOptionB;
 

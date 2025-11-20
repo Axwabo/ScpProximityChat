@@ -3,9 +3,11 @@
 internal sealed class PersonalizationVisibility : CustomTwoButtonSetting
 {
 
+    public const string Text = "Personalization Visibility";
+
     private bool _previouslyVisible;
 
-    public PersonalizationVisibility() : base(null, Translation.PersonalizationVisibility, Translation.Shown, Translation.Hidden)
+    public PersonalizationVisibility() : base(Text.GetStableHashCode(), Translation.PersonalizationVisibility, Translation.Shown, Translation.Hidden)
         => IsShared = SettingsRegistry.Shared;
 
     public bool Visible => IsOptionB;
