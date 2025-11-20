@@ -14,7 +14,7 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
     public static int ToggleSettingId => SettingsRegistry.Toggle.Id;
 
     /// <summary>Access to SSSS translations.</summary>
-    public static SecretApiProximityChatTranslations Translations { get; private set; } = new();
+    public static SecretApiProximityChatTranslations Translation { get; private set; } = new();
 
     /// <inheritdoc/>
     public override string Name => "SSSS Proximity Chat";
@@ -37,7 +37,8 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
     public override void LoadConfigs()
     {
         base.LoadConfigs();
-        Translations = this.LoadConfig<SecretApiProximityChatTranslations>("translations.yml") ?? new SecretApiProximityChatTranslations();
+        Translation = this.LoadConfig<SecretApiProximityChatTranslations>("translations.yml") ?? new SecretApiProximityChatTranslations();
+        Headers.Reload();
     }
 
     /// <inheritdoc/>

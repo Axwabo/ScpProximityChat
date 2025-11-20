@@ -3,8 +3,14 @@
 internal static class Headers
 {
 
-    public static readonly CustomHeader ProximityChat = new("Proximity Chat");
+    public static CustomHeader ProximityChat { get; private set; } = new("Proximity Chat");
 
-    public static readonly CustomHeader Personalization = new("Proximity Volume Personalization");
+    public static CustomHeader Personalization { get; private set; } = new("Proximity Volume Personalization");
+
+    public static void Reload()
+    {
+        ProximityChat = new CustomHeader(Translation.ChatHeader);
+        ProximityChat = new CustomHeader(Translation.PersonalizationHeader);
+    }
 
 }

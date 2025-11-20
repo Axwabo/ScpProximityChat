@@ -3,7 +3,7 @@
 internal sealed class ProximityChatToggle : CustomKeybindSetting
 {
 
-    public ProximityChatToggle() : base(null, "Toggle SCP Proximity Chat", KeyCode.LeftAlt, true, false, Hints.Toggle)
+    public ProximityChatToggle() : base(null, Translation.ToggleLabel, KeyCode.LeftAlt, true, false, Translation.ToggleHint)
         => IsShared = SettingsRegistry.Shared;
 
     protected override CustomSetting CreateDuplicate() => new ProximityChatToggle();
