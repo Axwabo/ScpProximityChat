@@ -12,6 +12,7 @@
 
     <ItemGroup>
         <PackageReference Include="SecretLabNAudio.Core" />
+        <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
@@ -21,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="Assembly-CSharp" />
+        <Reference Include="Assembly-CSharp" Publicize="true" />
         <Reference Include="CommandSystem.Core" />
         <Reference Include="Mirror" />
         <Reference Include="Pooling" />
