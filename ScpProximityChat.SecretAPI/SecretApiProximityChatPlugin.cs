@@ -13,8 +13,7 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
     /// <remarks>Can be used to create an <see cref="SSKeybindHintParameter"/>.</remarks>
     public static int ToggleSettingId => SettingsRegistry.Toggle.Id;
 
-    /// <summary>Access to SSSS translations.</summary>
-    public static SecretApiProximityChatTranslations Translation { get; private set; } = new();
+    internal static SecretApiProximityChatTranslations Translation { get; private set; } = new();
 
     /// <inheritdoc/>
     public override string Name => "SSSS Proximity Chat";

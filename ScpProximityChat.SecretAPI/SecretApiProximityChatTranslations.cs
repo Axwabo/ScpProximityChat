@@ -1,7 +1,7 @@
 ﻿namespace ScpProximityChat.SecretAPI;
 
 [Serializable]
-public sealed class SecretApiProximityChatTranslations
+internal sealed class SecretApiProximityChatTranslations
 {
 
     public string ChatHeader { get; set; } = "Proximity Chat";
