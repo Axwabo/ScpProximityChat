@@ -7,8 +7,6 @@ namespace ScpProximityChat.SecretAPI.Personalization;
 public static class PersonalizationManager
 {
 
-    private const string Prefix = "Volume for: ";
-
     private static readonly Dictionary<string, int> IdHashes = [];
 
     private static readonly Dictionary<string, SpeakerPersonalization> PersonalizationInstances = [];
@@ -21,14 +19,14 @@ public static class PersonalizationManager
     public static int IdFor(string userId)
         => IdHashes.TryGetValue(userId, out var hash)
             ? hash
-            : IdHashes[userId] = $"{Prefix}{userId}".GetStableHashCode();
+            : IdHashes[userId] = $"Volume for: {userId}".GetStableHashCode();
 
     /// <summary>
     /// Gets the label for the personalized volume setting for the given user ID.
     /// </summary>
     /// <param name="name">The user ID to get the label for.</param>
     /// <returns>The label.</returns>
-    public static string LabelFor(string name) => $"{Prefix}{name}";
+    public static string LabelFor(string name) => $"{Translation.VolumeFor}{name}";
 
     private static bool IsPersonalized(CustomSetting setting) => setting is PersonalizedVolume;
 

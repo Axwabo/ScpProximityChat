@@ -3,7 +3,7 @@
 internal sealed class MasterVolume : VolumeSettingBase
 {
 
-    public MasterVolume() : base(null, "Master Volume", "Overall volume of SCP Proximity Chat.")
+    public MasterVolume() : base(null, Translation.MasterVolumeLabel, Translation.MasterVolumeHint)
     {
     }
 
