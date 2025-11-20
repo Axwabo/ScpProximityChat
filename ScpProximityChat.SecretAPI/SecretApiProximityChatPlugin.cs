@@ -1,5 +1,6 @@
 ﻿using Hints;
 using LabApi.Events.CustomHandlers;
+using LabApi.Loader;
 using LabApi.Loader.Features.Plugins;
 
 namespace ScpProximityChat.SecretAPI;
@@ -11,6 +12,9 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
     /// <summary>The setting ID of the toggle keybind.</summary>
     /// <remarks>Can be used to create an <see cref="SSKeybindHintParameter"/>.</remarks>
     public static int ToggleSettingId => SettingsRegistry.Toggle.Id;
+
+    /// <summary>Access to SSSS translations.</summary>
+    public static SecretApiProximityChatTranslations Translations { get; private set; } = new();
 
     /// <inheritdoc/>
     public override string Name => "SSSS Proximity Chat";
@@ -28,6 +32,13 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
     public override Version RequiredApiVersion { get; } = new(1, 0, 0);
 
     private readonly PersonalizationEventHandlers _handlers = new();
+
+    /// <inheritdoc />
+    public override void LoadConfigs()
+    {
+        base.LoadConfigs();
+        Translations = this.LoadConfig<SecretApiProximityChatTranslations>("translations.yml") ?? new SecretApiProximityChatTranslations();
+    }
 
     /// <inheritdoc/>
     public override void Enable()
