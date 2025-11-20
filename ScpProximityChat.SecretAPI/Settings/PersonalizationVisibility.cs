@@ -7,7 +7,7 @@ internal sealed class PersonalizationVisibility : CustomTwoButtonSetting
 
     private bool _previouslyVisible;
 
-    public PersonalizationVisibility() : base(Text.GetStableHashCode(), Translation.PersonalizationVisibility, Translation.Shown, Translation.Hidden)
+    public PersonalizationVisibility() : base(Text.GetStableHashCode(), Translation.VisibilityLabel, Translation.Shown, Translation.Hidden)
         => IsShared = SettingsRegistry.Shared;
 
     public bool Visible => IsOptionB;

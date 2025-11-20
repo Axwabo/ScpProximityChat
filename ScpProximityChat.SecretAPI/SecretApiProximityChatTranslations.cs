@@ -20,7 +20,7 @@ internal sealed class SecretApiProximityChatTranslations
 
     public string Muted { get; set; } = "Muted";
 
-    public string PersonalizationVisibility { get; set; } = Settings.PersonalizationVisibility.Text;
+    public string VisibilityLabel { get; set; } = PersonalizationVisibility.Text;
 
     public string Shown { get; set; } = "Shown";
 
