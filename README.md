@@ -79,6 +79,24 @@ Defines the default cofiguration of `SpeakerToys` used by SCP Proximity Chat.
 > SpeakerToys are slightly quieter than the base-game voice chat.
 > A value around 1.5 should make them roughly equal.
 
+### `EnableDynamicVolume`
+
+Set to `true` to enable automatic volume normalization (dynamic volume).
+
+When enabled, quiet microphones are boosted and loud microphones are attenuated, so all players sound roughly the same volume.
+
+### `AutoGainMin`
+
+Lower bound for automatic voice gain. Prevents over-attenuation (dynamic volume).
+
+Default: `0.375`
+
+### `AutoGainMax`
+
+Upper bound for automatic voice gain. Prevents extreme amplification (dynamic volume).
+
+Default: `3.25`
+
 ### `AllowedRoles`
 
 Null, or a list of role types that are allowed to use SCP Proximity Chat.

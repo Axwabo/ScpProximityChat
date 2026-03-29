@@ -21,6 +21,18 @@ public sealed class ProximityChatConfig
     /// <summary>Audio settings for the speaker toy used for Proximity Chat.</summary>
     public SpeakerSettings AudioSettings { get; set; } = SpeakerSettings.Default;
 
+    /// <summary>Whether dynamic volume adjustment (auto-gain) is enabled.</summary>
+    [Description("Set to true to enable automatic volume normalization (quiet mics boosted, loud mics attenuated).")]
+    public bool EnableDynamicVolume { get; set; } = false;
+
+    /// <summary>Minimum automatic gain allowed for voice normalization.</summary>
+    [Description("Lower bound for automatic voice gain. Prevents over-attenuation.")]
+    public float AutoGainMin { get; set; } = 0.375f;
+
+    /// <summary>Maximum automatic gain allowed for voice normalization.</summary>
+    [Description("Upper bound for automatic voice gain. Prevents extreme amplification.")]
+    public float AutoGainMax { get; set; } = 3.25f;
+
     /// <summary>List of roles allowed to use Proximity Chat. Set to null to use the default condition (all SCPs except SCP-079 and SCP-3114).</summary>
     [Description("Set to null to use the default condition (all SCPs except SCP-079 and SCP-3114).")]
     public List<RoleTypeId>? AllowedRoles { get; set; }
