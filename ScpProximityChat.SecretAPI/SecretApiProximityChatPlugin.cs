@@ -47,7 +47,7 @@ public sealed class SecretApiProximityChatPlugin : Plugin<SecretApiProximityChat
         ProximityChatEvents.Receiving += Receiving;
         ProximityChatEvents.Personalizing += PersonalizationManager.RegisterPersonalization;
         CustomHandlersManager.RegisterEventsHandler(_handlers);
-        CustomSetting.Register(SettingsRegistry.Toggle, SettingsRegistry.Mute, SettingsRegistry.Master);
+        CustomSetting.Register(SettingsRegistry.Toggle, SettingsRegistry.Input, SettingsRegistry.Mute, SettingsRegistry.Master);
         SettingsRegistry.Shared = Config!.Shared;
         if (!(VolumeHelpers.CanPersonalize = Config!.Personalization))
             return;

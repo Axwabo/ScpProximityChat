@@ -36,6 +36,7 @@ internal sealed class ProximityChatToggle : CustomKeybindSetting
             return;
         if (IsPressed)
         {
+            _cancelSerial++;
             if (!owner.IsProximityChatEnabled())
                 owner.ToggleProximityChat();
             return;
@@ -51,9 +52,18 @@ internal sealed class ProximityChatToggle : CustomKeybindSetting
     private async Awaitable DisableDelayedAsync(Player owner, uint serial)
     {
         var token = owner.ReferenceHub.destroyCancellationToken;
-        await Awaitable.WaitForSecondsAsync(1, token);
-        if (owner.LifeId == _lifeId && _cancelSerial == serial && owner.IsProximityChatEnabled())
+        await Awaitable.WaitForSecondsAsync(0.5f, token);
+        if (owner.LifeId != _lifeId || _cancelSerial != serial)
+            return;
+        if (owner.IsProximityChatEnabled())
             owner.ToggleProximityChat();
+        _cancelSerial++;
+    }
+
+    public static void InvalidateCancellation(Player player)
+    {
+        if (TryGetPlayerSetting(player, out ProximityChatToggle? toggle))
+            toggle._cancelSerial++;
     }
 
 }

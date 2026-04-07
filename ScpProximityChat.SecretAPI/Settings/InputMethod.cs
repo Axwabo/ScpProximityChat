@@ -18,6 +18,8 @@ internal sealed class InputMethod : CustomTwoButtonSetting
 
     protected override void HandleSettingUpdate()
     {
+        if (!Hold)
+            ProximityChatToggle.InvalidateCancellation(KnownOwner!);
     }
 
     public override CustomHeader Header => Headers.ProximityChat;
