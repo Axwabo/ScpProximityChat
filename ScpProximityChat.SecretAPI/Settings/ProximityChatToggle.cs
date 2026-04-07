@@ -25,7 +25,7 @@ internal sealed class ProximityChatToggle : CustomKeybindSetting
     {
         var owner = KnownOwner!;
         _inputMethod ??= GetPlayerSetting<InputMethod>(SettingsRegistry.Input.Id, owner);
-        if (!_inputMethod!.Hold)
+        if (!_inputMethod?.Hold ?? true)
         {
             if (IsPressed && owner.CanUseProximityChat())
                 owner.ToggleProximityChat();
