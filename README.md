@@ -20,14 +20,9 @@ and they can control the volume of other players' Proximity Chat on their client
 
 ## Core
 
-> [!NOTE]
-> `SecretLabNAudio.Core` is required to enable SpeakerToy pooling and personalization.
-> You don't need modules or dependencies of `SecretLabNAudio` - only the core is required, not even `NAudio.Core`
->
-> If you've already installed the full SecretLabNAudio plugin, you can skip the first two steps.
-
 1. Download the `SecretLabNAudio.Core.dll` file from the
    [SecretLabNAudio releases page](https://github.com/Axwabo/SecretLabNAudio/releases)
+    - Use version `2.0.0` or newer
 2. Place the file in the **dependencies** directory:
     - Linux: `.config/SCP Secret Laboratory/LabAPI/dependencies/<port>/`
     - Windows: `%appdata%/SCP Secret Laboratory/LabAPI/dependencies/<port>/`
@@ -37,13 +32,24 @@ and they can control the volume of other players' Proximity Chat on their client
     - Windows: `%appdata%/SCP Secret Laboratory/LabAPI/plugins/<port>/`
 5. Restart the server
 
+> [!NOTE]
+> `SecretLabNAudio.Core` is required to enable SpeakerToy pooling and personalization.
+> You don't need modules or dependencies of `SecretLabNAudio` - only the core is required, not even `NAudio.Core`
+>
+> If you've already installed the full SecretLabNAudio plugin, you can skip the first two steps.
+
 ## SSSS
 
 0. Install [ScpProximityChat.Core](#core)
 1. Download the `SecretAPI.dll` file from the [SecretAPI releases page](https://github.com/Misfiy/SecretAPI/releases)
+    - Use version `3.1.0` or newer
 2. Download the `ScpProximityChat.SecretAPI.dll` from the [releases page](https://github.com/Axwabo/ScpProximityChat/releases)
 3. Place both DLLs in the **plugins** directory
-4. Restart the server
+4. Make sure to have `Harmony 2.2.2` installed (plenty of plugins require this)
+    1. Download the `Harmony.2.2.2.0.zip` file from the
+       [Harmony releases page](https://github.com/pardeike/Harmony/releases/tag/v2.2.2.0)
+    2. Extract the `net48/0Harmony.dll` file into the **dependencies** directory
+5. Restart the server
 
 # Configuration
 
