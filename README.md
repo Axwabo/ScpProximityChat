@@ -55,7 +55,7 @@ When the input mode is "hold," you'll have to hold the Proximity Chat key to use
 
 0. Install [ScpProximityChat.Core](#core)
 1. Download the `SecretAPI.dll` file from the [SecretAPI releases page](https://github.com/Misfiy/SecretAPI/releases)
-    - Use version `3.1.0` or newer
+    - Use version `3.1.1` or newer
 2. Download the `ScpProximityChat.SecretAPI.dll` from the [releases page](https://github.com/Axwabo/ScpProximityChat/releases)
 3. Place both DLLs in the **plugins** directory
 4. Make sure to have `Harmony 2.2.2` installed (plenty of plugins require this)
