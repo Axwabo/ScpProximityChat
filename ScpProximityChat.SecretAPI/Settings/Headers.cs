@@ -10,7 +10,7 @@ internal static class Headers
     public static void Reload()
     {
         ProximityChat = new CustomHeader(Translation.ChatHeader);
-        ProximityChat = new CustomHeader(Translation.PersonalizationHeader);
+        Personalization = new CustomHeader(Translation.PersonalizationHeader);
     }
 
 }
