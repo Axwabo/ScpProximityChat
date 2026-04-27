@@ -16,6 +16,19 @@ and they can control the volume of other players' Proximity Chat on their client
 > [!TIP]
 > See also: [configuration](#configuration) and [development](#development)
 
+# In-Game Usage
+
+> [!NOTE]
+> This section only applies if you've installed the [SSSS](#SSSS) module.
+
+You must assign a key in Server-Specific Settings first.
+
+When the input method is set to "toggle," press the specified key to toggle whether to speak in SCP Chat or Proximity Chat.
+
+When the input mode is "hold," you'll have to hold the Proximity Chat key to use Proximity Chat. Proximity Chat is disabled 0.5 seconds after releasing the key.
+
+**The base-game voice chat key must be held even when using Proximity Chat.** Otherwise, the server doesn't receive audio, and therefore can't transmit it to others.
+
 # Installation
 
 ## Core
@@ -153,6 +166,9 @@ Generally, this means joining another server hosted on same IP address will use 
 on a different server with the same IP or account ID.
 
 ## `Personalization`
+
+> [!NOTE]
+> Personalization entries show all players, not just SCPs.
 
 If enabled, players will be able to personalize other players' SCP Proximity Chat volume.
 
